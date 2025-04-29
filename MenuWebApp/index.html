@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nombre del Restaurante</title>
+    <title>Comiditas - Restaurante</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
+        <div class="logo">
+            <h1>Comiditas</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
@@ -22,126 +26,115 @@
     </header>
 
     <section id="inicio">
-        <h1>Bienvenido a Nuestro Restaurante</h1>
-        <p>Descubre nuestros deliciosos platillos...</p>
+        <div class="banner">
+            <h1>Bienvenido a Comiditas</h1>
+            <p>Descubre nuestros deliciosos platillos preparados con amor</p>
+            <a href="#menu" class="btn">Ver Menú</a>
+        </div>
     </section>
 
     <section id="menu">
         <h2>Nuestro Menú</h2>
-        <!-- Contenedor para detalles del platillo -->
         <div id="detalle-platillo" style="display: none;">
             <h3 id="detalle-titulo">Cargando...</h3>
             <img id="detalle-imagen" src="" alt="Imagen del platillo">
             <p id="detalle-descripcion"></p>
-            <button id="agregar-pedido" class="seleccionar-pedido">Agregar al pedido</button>
-            <button id="cerrar-detalle" class="cerrar-detalle">Cerrar</button>
+            <div class="detalle-acciones">
+                <button id="agregar-pedido" class="seleccionar-pedido">Agregar al pedido</button>
+                <button id="cerrar-detalle" class="cerrar-detalle">Cerrar</button>
+            </div>
         </div>
 
         <div class="categoria">
             <h3>Entradas</h3>
-            <ul class="productos">
-                <li data-subproductos="sub-entrada-1-1">Ensalada César con Pollo</li>
-                <li data-subproductos="sub-entrada-1-2">Ensalada César con Camarones</li>
-                <li data-subproductos="sub-entrada-1-3">Ensalada César Vegetariana</li>
-                <li data-subproductos="sub-entrada-2-1">Croquetas de Jamón</li>
-                <li data-subproductos="sub-entrada-2-2">Croquetas de Pollo</li>
-            </ul>
-            <div class="subproductos" id="sub-entrada-1-1">
-                <h4>Ensalada César con Pollo</h4>
-                <img src="images/entradas/ensaladadepollo.png" alt="Ensalada César con Pollo">
-                <p>Clásica ensalada César con pollo a la parrilla.</p>
-            </div>
-            <div class="subproductos" id="sub-entrada-1-2">
-                <h4>Ensalada César con Camarones</h4>
-                <img src="images/entradas/ensaladadecamarones.png" alt="Ensalada César con Camarones">
-                <p>Deliciosa ensalada César con camarones frescos.</p>
-            </div>
-            <div class="subproductos" id="sub-entrada-1-3">
-                <h4>Ensalada César Vegetariana</h4>
-                <img src="images/entradas/ensaladavegetariana.png" alt="Ensalada César Vegetariana">
-                <p>Opción vegetariana de la ensalada César.</p>
-            </div>
-            <div class="subproductos" id="sub-entrada-2-1">
-                <h4>Croquetas de Jamón</h4>
-                <img src="images/entradas/croquetasdejamon.png" alt="Croquetas de Jamón">
-                <p>Croquetas cremosas rellenas de jamón.</p>
-            </div>
-            <div class="subproductos" id="sub-entrada-2-2">
-                <h4>Croquetas de Pollo</h4>
-                <img src="images/entradas/croquetasdepollo.jpg" alt="Croquetas de Pollo">
-                <p>Croquetas caseras de pollo, ¡un clásico!</p>
+            <div class="productos-grid">
+                <div class="producto" data-subproductos="sub-entrada-1-1">
+                    <h4>Ensalada César con Pollo</h4>
+                    <img src="images/entradas/ensaladadepollo.png" alt="Ensalada César con Pollo">
+                    <p>Clásica ensalada César con pollo a la parrilla.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-entrada-1-2">
+                    <h4>Ensalada César con Camarones</h4>
+                    <img src="images/entradas/ensaladadecamarones.png" alt="Ensalada César con Camarones">
+                    <p>Deliciosa ensalada César con camarones frescos.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-entrada-1-3">
+                    <h4>Ensalada César Vegetariana</h4>
+                    <img src="images/entradas/ensaladavegetariana.png" alt="Ensalada César Vegetariana">
+                    <p>Opción vegetariana de la ensalada César.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-entrada-2-1">
+                    <h4>Croquetas de Jamón</h4>
+                    <img src="images/entradas/croquetasdejamon.png" alt="Croquetas de Jamón">
+                    <p>Croquetas cremosas rellenas de jamón.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-entrada-2-2">
+                    <h4>Croquetas de Pollo</h4>
+                    <img src="images/entradas/croquetasdepollo.jpg" alt="Croquetas de Pollo">
+                    <p>Croquetas caseras de pollo, ¡un clásico!</p>
+                </div>
             </div>
         </div>
 
         <div class="categoria">
             <h3>Platos Fuertes</h3>
-            <ul class="productos">
-                <li data-subproductos="sub-plato-1-1">Paella de Mariscos</li>
-                <li data-subproductos="sub-plato-1-2">Paella Valenciana</li>
-                <li data-subproductos="sub-plato-1-3">Paella Negra</li>
-                <li data-subproductos="sub-plato-2-1">Solomillo al Vino Tinto</li>
-                <li data-subproductos="sub-plato-2-2">Solomillo a la Pimienta</li>
-            </ul>
-            <div class="subproductos" id="sub-plato-1-1">
-                <h4>Paella de Mariscos</h4>
-                <img src="images/platos_fuertes/paellamariscos.png" alt="Paella de Mariscos">
-                <p>Paella con una variedad de mariscos frescos.</p>
-            </div>
-            <div class="subproductos" id="sub-plato-1-2">
-                <h4>Paella Valenciana</h4>
-                <img src="images/platos_fuertes/paellavalenciana.png" alt="Paella Valenciana">
-                <p>Paella tradicional con pollo y conejo.</p>
-            </div>
-            <div class="subproductos" id="sub-plato-1-3">
-                <h4>Paella Negra</h4>
-                <img src="images/platos_fuertes/paellanegra.png" alt="Paella Negra">
-                <p>Paella cocinada con tinta de calamar.</p>
-            </div>
-            <div class="subproductos" id="sub-plato-2-1">
-                <h4>Solomillo al Vino Tinto</h4>
-                <img src="images/platos_fuertes/solomillo.png" alt="Solomillo al Vino Tinto">
-                <p>Solomillo tierno cocinado en salsa de vino tinto.</p>
-            </div>
-            <div class="subproductos" id="sub-plato-2-2">
-                <h4>Solomillo a la Pimienta</h4>
-                <img src="images/platos_fuertes/solomillopimienta.jpg" alt="Solomillo a la Pimienta">
-                <p>Solomillo con un toque de pimienta.</p>
+            <div class="productos-grid">
+                <div class="producto" data-subproductos="sub-plato-1-1">
+                    <h4>Paella de Mariscos</h4>
+                    <img src="images/platos_fuertes/paellamariscos.png" alt="Paella de Mariscos">
+                    <p>Paella con una variedad de mariscos frescos.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-plato-1-2">
+                    <h4>Paella Valenciana</h4>
+                    <img src="images/platos_fuertes/paellavalenciana.png" alt="Paella Valenciana">
+                    <p>Paella tradicional con pollo y conejo.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-plato-1-3">
+                    <h4>Paella Negra</h4>
+                    <img src="images/platos_fuertes/paellanegra.png" alt="Paella Negra">
+                    <p>Paella cocinada con tinta de calamar.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-plato-2-1">
+                    <h4>Solomillo al Vino Tinto</h4>
+                    <img src="images/platos_fuertes/solomillo.png" alt="Solomillo al Vino Tinto">
+                    <p>Solomillo tierno cocinado en salsa de vino tinto.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-plato-2-2">
+                    <h4>Solomillo a la Pimienta</h4>
+                    <img src="images/platos_fuertes/solomillopimienta.jpg" alt="Solomillo a la Pimienta">
+                    <p>Solomillo con un toque de pimienta.</p>
+                </div>
             </div>
         </div>
 
         <div class="categoria">
             <h3>Postres</h3>
-            <ul class="productos">
-                <li data-subproductos="sub-postre-1-1">Tarta de Chocolate con Nueces</li>
-                <li data-subproductos="sub-postre-1-2">Tarta de Chocolate con Fresas</li>
-                <li data-subproductos="sub-postre-1-3">Tarta de Chocolate con Dulce de Leche</li>
-                <li data-subproductos="sub-postre-2-1">Helado de Vainilla</li>
-                <li data-subproductos="sub-postre-2-2">Helado de Chocolate</li>
-            </ul>
-            <div class="subproductos" id="sub-postre-1-1">
-                <h4>Tarta de Chocolate con Nueces</h4>
-                <img src="images/postres/tartadechocolateconnueces.png" alt="Tarta de Chocolate con Nueces">
-                <p>Deliciosa tarta de chocolate con trozos de nueces.</p>
-            </div>
-            <div class="subproductos" id="sub-postre-1-2">
-                <h4>Tarta de Chocolate con Fresas</h4>
-                <img src="images/postres/tartadechocolateconfresas.png" alt="Tarta de Chocolate con Fresas">
-                <p>Tarta de chocolate decorada con fresas frescas.</p>
-            </div>
-            <div class="subproductos" id="sub-postre-1-3">
-                <h4>Tarta de Chocolate con Dulce de Leche</h4>
-                <img src="images/postres/tartadechocolatecondulcedeleche.png" alt="Tarta de Chocolate con Dulce de Leche">
-                <p>Tarta de chocolate con un corazón de dulce de leche.</p>
-            </div>
-            <div class="subproductos" id="sub-postre-2-1">
-                <h4>Helado de Vainilla</h4>
-                <img src="images/postres/heladodevainilla.png" alt="Helado de Vainilla">
-                <p>Clásico helado de vainilla, perfecto para cualquier ocasión.</p>
-            </div>
-            <div class="subproductos" id="sub-postre-2-2">
-                <h4>Helado de Chocolate</h4>
-                <img src="images/postres/heladodechocolate.png" alt="Helado de Chocolate">
-                <p>Rico helado de chocolate, ideal para los amantes del chocolate.</p>
+            <div class="productos-grid">
+                <div class="producto" data-subproductos="sub-postre-1-1">
+                    <h4>Tarta de Chocolate con Nueces</h4>
+                    <img src="images/postres/tartadechocolateconnueces.png" alt="Tarta de Chocolate con Nueces">
+                    <p>Deliciosa tarta de chocolate con trozos de nueces.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-postre-1-2">
+                    <h4>Tarta de Chocolate con Fresas</h4>
+                    <img src="images/postres/tartadechocolateconfresas.png" alt="Tarta de Chocolate con Fresas">
+                    <p>Tarta de chocolate decorada con fresas frescas.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-postre-1-3">
+                    <h4>Tarta de Chocolate con Dulce de Leche</h4>
+                    <img src="images/postres/tartadechocolatecondulcedeleche.png" alt="Tarta de Chocolate con Dulce de Leche">
+                    <p>Tarta de chocolate con un corazón de dulce de leche.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-postre-2-1">
+                    <h4>Helado de Vainilla</h4>
+                    <img src="images/postres/heladodevainilla.png" alt="Helado de Vainilla">
+                    <p>Clásico helado de vainilla, perfecto para cualquier ocasión.</p>
+                </div>
+                <div class="producto" data-subproductos="sub-postre-2-2">
+                    <h4>Helado de Chocolate</h4>
+                    <img src="images/postres/heladodechocolate.png" alt="Helado de Chocolate">
+                    <p>Rico helado de chocolate, ideal para los amantes del chocolate.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -153,42 +146,57 @@
             <h3>Pedidos Seleccionados</h3>
             <ul id="lista-pedidos"></ul>
         </div>
-        <form id="formulario-pedido">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br><br>
-    
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="Ej: 1234567890" required><br><br>
-    
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-    
-            <label for="direccion">Dirección de entrega:</label>
-            <textarea id="direccion" name="direccion" rows="4" required placeholder="Ej: Calle, Número, Colonia, Ciudad, CP"></textarea><br><br>
-    
-            <label for="fecha">Fecha de entrega:</label>
-            <input type="date" id="fecha" name="fecha" required><br><br>
-    
-            <label for="hora">Hora preferida de entrega:</label>
-            <input type="time" id="hora" name="hora" required><br><br>
-    
-            <label for="comentarios">Comentarios adicionales (opcional):</label>
-            <textarea id="comentarios" name="comentarios" rows="3" placeholder="Ej: Sin cebolla, entrega en puerta trasera"></textarea><br><br>
-    
-            <input type="submit" value="Enviar Pedido">
+        <form id="formulario-pedido" class="form-grid">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="Ej: 1234567890" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="direccion">Dirección de entrega:</label>
+                <textarea id="direccion" name="direccion" rows="4" required placeholder="Ej: Calle, Número, Colonia, Ciudad, CP"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha de entrega:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Hora preferida de entrega:</label>
+                <input type="time" id="hora" name="hora" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="comentarios">Comentarios adicionales (opcional):</label>
+                <textarea id="comentarios" name="comentarios" rows="3" placeholder="Ej: Sin cebolla, entrega en puerta trasera"></textarea>
+            </div>
+            <input type="submit" value="Enviar Pedido" class="btn">
         </form>
     </section>
 
     <section id="contacto">
         <h2>Contacto</h2>
         <p>¡Contáctanos para cualquier consulta!</p>
-        <p>Teléfono: 5578151025</p>
-        <p>Email: miguelangelherrerahernandez123@gmail.com</p>
-        <p>Dirección: Toltecas no327 entre meconetzin y tepalcatzin</p>
+        <div class="contact-info">
+            <p><i class="fas fa-phone"></i> Teléfono: 5578151025</p>
+            <p><i class="fas fa-envelope"></i> Email: miguelangelherrerahernandez123@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Dirección: Toltecas no327 entre meconetzin y tepalcatzin</p>
+        </div>
     </section>
 
     <footer>
-        <p>© 2024 Comiditas</p>
+        <p>© 2024 Comiditas. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#menu">Menú</a>
+            <a href="#pedido-domicilio">Pedidos</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
