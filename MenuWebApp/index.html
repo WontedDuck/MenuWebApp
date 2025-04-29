@@ -28,6 +28,14 @@
 
     <section id="menu">
         <h2>Nuestro Menú</h2>
+        <!-- Contenedor para detalles del platillo -->
+        <div id="detalle-platillo" style="display: none;">
+            <h3 id="detalle-titulo">Cargando...</h3>
+            <img id="detalle-imagen" src="" alt="Imagen del platillo">
+            <p id="detalle-descripcion"></p>
+            <button id="agregar-pedido" class="seleccionar-pedido">Agregar al pedido</button>
+            <button id="cerrar-detalle" class="cerrar-detalle">Cerrar</button>
+        </div>
 
         <div class="categoria">
             <h3>Entradas</h3>
@@ -48,19 +56,19 @@
                 <img src="images/entradas/ensaladadecamarones.png" alt="Ensalada César con Camarones">
                 <p>Deliciosa ensalada César con camarones frescos.</p>
             </div>
-             <div class="subproductos" id="sub-entrada-1-3">
+            <div class="subproductos" id="sub-entrada-1-3">
                 <h4>Ensalada César Vegetariana</h4>
                 <img src="images/entradas/ensaladavegetariana.png" alt="Ensalada César Vegetariana">
                 <p>Opción vegetariana de la ensalada César.</p>
             </div>
             <div class="subproductos" id="sub-entrada-2-1">
                 <h4>Croquetas de Jamón</h4>
-                 <img src="images/entradas/croquetasdejamon.png" alt="Croquetas de Jamón">
+                <img src="images/entradas/croquetasdejamon.png" alt="Croquetas de Jamón">
                 <p>Croquetas cremosas rellenas de jamón.</p>
             </div>
             <div class="subproductos" id="sub-entrada-2-2">
                 <h4>Croquetas de Pollo</h4>
-                 <img src="images/entradas/croquetasdepollo.jpg" alt="Croquetas de Pollo">
+                <img src="images/entradas/croquetasdepollo.jpg" alt="Croquetas de Pollo">
                 <p>Croquetas caseras de pollo, ¡un clásico!</p>
             </div>
         </div>
@@ -68,11 +76,11 @@
         <div class="categoria">
             <h3>Platos Fuertes</h3>
             <ul class="productos">
-              <li data-subproductos="sub-plato-1-1">Paella de Mariscos</li>
-              <li data-subproductos="sub-plato-1-2">Paella Valenciana</li>
-              <li data-subproductos="sub-plato-1-3">Paella Negra</li>
-              <li data-subproductos="sub-plato-2-1">Solomillo al Vino Tinto</li>
-              <li data-subproductos="sub-plato-2-2">Solomillo a la Pimienta</li>
+                <li data-subproductos="sub-plato-1-1">Paella de Mariscos</li>
+                <li data-subproductos="sub-plato-1-2">Paella Valenciana</li>
+                <li data-subproductos="sub-plato-1-3">Paella Negra</li>
+                <li data-subproductos="sub-plato-2-1">Solomillo al Vino Tinto</li>
+                <li data-subproductos="sub-plato-2-2">Solomillo a la Pimienta</li>
             </ul>
             <div class="subproductos" id="sub-plato-1-1">
                 <h4>Paella de Mariscos</h4>
@@ -104,11 +112,11 @@
         <div class="categoria">
             <h3>Postres</h3>
             <ul class="productos">
-              <li data-subproductos="sub-postre-1-1">Tarta de Chocolate con Nueces</li>
-              <li data-subproductos="sub-postre-1-2">Tarta de Chocolate con Fresas</li>
-              <li data-subproductos="sub-postre-1-3">Tarta de Chocolate con Dulce de Leche</li>
-              <li data-subproductos="sub-postre-2-1">Helado de Vainilla</li>
-              <li data-subproductos="sub-postre-2-2">Helado de Chocolate</li>
+                <li data-subproductos="sub-postre-1-1">Tarta de Chocolate con Nueces</li>
+                <li data-subproductos="sub-postre-1-2">Tarta de Chocolate con Fresas</li>
+                <li data-subproductos="sub-postre-1-3">Tarta de Chocolate con Dulce de Leche</li>
+                <li data-subproductos="sub-postre-2-1">Helado de Vainilla</li>
+                <li data-subproductos="sub-postre-2-2">Helado de Chocolate</li>
             </ul>
             <div class="subproductos" id="sub-postre-1-1">
                 <h4>Tarta de Chocolate con Nueces</h4>
@@ -183,7 +191,6 @@
         <p>© 2024 Comiditas</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script  src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
