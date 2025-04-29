@@ -1,7 +1,7 @@
-const productos = document.querySelectorAll('.productos li');
+const productos = document.querySelectorAll('.producto');
 
-// Datos de los subproductos (movidos desde detalle.html)
-const subproductosData = {
+// Datos de los productos
+const productosData = {
     "sub-entrada-1-1": {
         titulo: "Ensalada César con Pollo",
         imagen: "images/entradas/ensaladadepollo.png",
@@ -79,20 +79,6 @@ const subproductosData = {
     }
 };
 
-// Mostrar u ocultar subproductos al hacer clic en productos
-productos.forEach(producto => {
-    producto.addEventListener('click', () => {
-        const subproductosId = producto.dataset.subproductos;
-        const subproductos = document.getElementById(subproductosId);
-
-        if (subproductos.style.display === 'block') {
-            subproductos.style.display = 'none';
-        } else {
-            subproductos.style.display = 'block';
-        }
-    });
-});
-
 // Importar jsPDF desde CDN
 const { jsPDF } = window.jspdf;
 
@@ -109,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fechaMinima = hoy.toISOString().split('T')[0]; // Formato YYYY-MM-DD
     fechaInput.setAttribute('min', fechaMinima);
 
-    // Manejar clics en los subproductos
-    const subproductos = document.querySelectorAll('.subproductos');
-    subproductos.forEach(producto => {
+    // Manejar clics en los productos
+    productos.forEach(producto => {
         producto.style.cursor = 'pointer';
         
         // Agregar botón para seleccionar pedido
@@ -120,21 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
         botonSeleccionar.className = 'seleccionar-pedido';
         producto.appendChild(botonSeleccionar);
 
-        // Evento para mostrar detalles en la misma página
+        // Evento para mostrar detalles
         producto.addEventListener('click', (e) => {
             if (e.target !== botonSeleccionar) {
-                const id = producto.id;
-                if (subproductosData[id]) {
+                const id = producto.dataset.subproductos;
+                if (productosData[id]) {
                     const detallePlatillo = document.getElementById('detalle-platillo');
-                    document.getElementById('detalle-titulo').textContent = subproductosData[id].titulo;
-                    document.getElementById('detalle-imagen').src = subproductosData[id].imagen;
-                    document.getElementById('detalle-descripcion').textContent = subproductosData[id].descripcion;
+                    document.getElementById('detalle-titulo').textContent = productosData[id].titulo;
+                    document.getElementById('detalle-imagen').src = productosData[id].imagen;
+                    document.getElementById('detalle-descripcion').textContent = productosData[id].descripcion;
                     detallePlatillo.style.display = 'block';
+                    // Desplazar la vista al contenedor de detalles
+                    detallePlatillo.scrollIntoView({ behavior: 'smooth' });
 
                     // Configurar el botón "Agregar al pedido" en el contenedor de detalles
                     const botonAgregarDetalle = document.getElementById('agregar-pedido');
                     botonAgregarDetalle.onclick = () => {
-                        const titulo = subproductosData[id].titulo;
+                        const titulo = productosData[id].titulo;
                         if (!pedidosSeleccionados.includes(titulo)) {
                             pedidosSeleccionados.push(titulo);
                             localStorage.setItem('pedidosSeleccionados', JSON.stringify(pedidosSeleccionados));
@@ -148,10 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Evento para agregar al pedido desde el subproducto
+        // Evento para agregar al pedido desde el producto
         botonSeleccionar.addEventListener('click', () => {
-            const id = producto.id;
-            const titulo = subproductosData[id].titulo;
+            const id = producto.dataset.subproductos;
+            const titulo = productosData[id].titulo;
             
             if (!pedidosSeleccionados.includes(titulo)) {
                 pedidosSeleccionados.push(titulo);
@@ -224,26 +211,26 @@ function generarPDF() {
 
     // Configurar el contenido del PDF
     doc.setFontSize(20);
-    doc.text('Confirmación de Pedido a Domicilio', 20, 20);
+    doc.text('Confirmación de Pedido - Comiditas', 20, 20);
     
     doc.setFontSize(12);
+    doc.text('Gracias por tu pedido!', 20, 30);
     doc.text(`Nombre: ${nombre}`, 20, 40);
     doc.text(`Email: ${email}`, 20, 50);
     doc.text(`Teléfono: ${telefono}`, 20, 60);
     doc.text(`Dirección: ${direccion}`, 20, 70);
     doc.text(`Fecha de entrega: ${fecha}`, 20, 80);
     doc.text(`Hora de entrega: ${hora}`, 20, 90);
+    let yPosition = 100;
     if (comentarios) {
-        doc.text(`Comentarios: ${comentarios}`, 20, 100);
-        doc.text('Pedidos:', 20, 120);
-    } else {
-        doc.text('Pedidos:', 20, 100);
+        doc.text(`Comentarios: ${comentarios}`, 20, yPosition);
+        yPosition += 10;
     }
+    doc.text('Pedidos:', 20, yPosition);
     
     // Agregar los pedidos al PDF
     pedidosSeleccionados.forEach((pedido, index) => {
-        const yPosition = comentarios ? 130 + (index * 10) : 110 + (index * 10);
-        doc.text(`- ${pedido}`, 30, yPosition);
+        doc.text(`- ${pedido}`, 30, yPosition + 10 + (index * 10));
     });
 
     // Guardar el PDF
@@ -255,21 +242,3 @@ function generarPDF() {
     localStorage.setItem('pedidosSeleccionados', JSON.stringify(pedidosSeleccionados));
     actualizarListaPedidos();
 }
-
-// Estilos para el botón de seleccionar pedido
-const style = document.createElement('style');
-style.textContent = `
-    .seleccionar-pedido {
-        background-color: #63b3ed;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        cursor: pointer;
-        margin-top: 1rem;
-    }
-    .seleccionar-pedido:hover {
-        background-color: #3182ce;
-    }
-`;
-document.head.appendChild(style);
