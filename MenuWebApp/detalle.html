@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Platillo</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="detalle-container">
+        <div id="detalle-platillo">
+            <h2 id="detalle-titulo">Cargando...</h2>
+            <img id="detalle-imagen" src="" alt="Imagen del platillo">
+            <p id="detalle-descripcion"></p>
+            <button id="agregar-pedido" class="seleccionar-pedido">Agregar al pedido</button>
+            <a href="index.html#pedido-domicilio" target="_blank" class="reservar-btn">Hacer pedido a domicilio</a>
+        </div>
+    </div>
+
+    <script>
+        const subproductosData = {
+            "sub-entrada-1-1": {
+                titulo: "Ensalada César con Pollo",
+                imagen: "images/entradas/ensaladadepollo.png",
+                descripcion: "Clásica ensalada César con pollo a la parrilla."
+            },
+            "sub-entrada-1-2": {
+                titulo: "Ensalada César con Camarones",
+                imagen: "images/entradas/ensaladadecamarones.png",
+                descripcion: "Deliciosa ensalada César con camarones frescos."
+            },
+            "sub-entrada-1-3": {
+                titulo: "Ensalada César Vegetariana",
+                imagen: "images/entradas/ensaladavegetariana.png",
+                descripcion: "Opción vegetariana de la ensalada César."
+            },
+            "sub-entrada-2-1": {
+                titulo: "Croquetas de Jamón",
+                imagen: "images/entradas/croquetasdejamon.png",
+                descripcion: "Croquetas cremosas rellenas de jamón."
+            },
+            "sub-entrada-2-2": {
+                titulo: "Croquetas de Pollo",
+                imagen: "images/entradas/croquetasdepollo.jpg",
+                descripcion: "Croquetas caseras de pollo, ¡un clásico!"
+            },
+            "sub-plato-1-1": {
+                titulo: "Paella de Mariscos",
+                imagen: "images/platos_fuertes/paellamariscos.png",
+                descripcion: "Paella con una variedad de mariscos frescos."
+            },
+            "sub-plato-1-2": {
+                titulo: "Paella Valenciana",
+                imagen: "images/platos_fuertes/paellavalenciana.png",
+                descripcion: "Paella tradicional con pollo y conejo."
+            },
+            "sub-plato-1-3": {
+                titulo: "Paella Negra",
+                imagen: "images/platos_fuertes/paellanegra.png",
+                descripcion: "Paella cocinada con tinta de calamar."
+            },
+            "sub-plato-2-1": {
+                titulo: "Solomillo al Vino Tinto",
+                imagen: "images/platos_fuertes/solomillo.png",
+                descripcion: "Solomillo tierno cocinado en salsa de vino tinto."
+            },
+            "sub-plato-2-2": {
+                titulo: "Solomillo a la Pimienta",
+                imagen: "images/platos_fuertes/solomillopimienta.jpg",
+                descripcion: "Solomillo con un toque de pimienta."
+            },
+            "sub-postre-1-1": {
+                titulo: "Tarta de Chocolate con Nueces",
+                imagen: "images/postres/tartadechocolateconnueces.png",
+                descripcion: "Deliciosa tarta de chocolate con trozos de nueces."
+            },
+            "sub-postre-1-2": {
+                titulo: "Tarta de Chocolate con Fresas",
+                imagen: "images/postres/tartadechocolateconfresas.png",
+                descripcion: "Tarta de chocolate decorada con fresas frescas."
+            },
+            "sub-postre-1-3": {
+                titulo: "Tarta de Chocolate con Dulce de Leche",
+                imagen: "images/postres/tartadechocolatecondulcedeleche.png",
+                descripcion: "Tarta de chocolate con un corazón de dulce de leche."
+            },
+            "sub-postre-2-1": {
+                titulo: "Helado de Vainilla",
+                imagen: "images/postres/heladodevainilla.png",
+                descripcion: "Clásico helado de vainilla, perfecto para cualquier ocasión."
+            },
+            "sub-postre-2-2": {
+                titulo: "Helado de Chocolate",
+                imagen: "images/postres/heladodechocolate.png",
+                descripcion: "Rico helado de chocolate, ideal para los amantes del chocolate."
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            
+            if (subproductosData[id]) {
+                document.getElementById('detalle-titulo').textContent = subproductosData[id].titulo;
+                document.getElementById('detalle-imagen').src = subproductosData[id].imagen;
+                document.getElementById('detalle-descripcion').textContent = subproductosData[id].descripcion;
+
+                // Manejar el botón de agregar al pedido
+                const botonAgregar = document.getElementById('agregar-pedido');
+                botonAgregar.addEventListener('click', () => {
+                    const pedidos = JSON.parse(localStorage.getItem('pedidosSeleccionados') || '[]');
+                    const titulo = subproductosData[id].titulo;
+                    
+                    if (!pedidos.includes(titulo)) {
+                        pedidos.push(titulo);
+                        localStorage.setItem('pedidosSeleccionados', JSON.stringify(pedidos));
+                        alert('¡Platillo agregado al pedido!');
+                    } else {
+                        alert('Este platillo ya está en el pedido.');
+                    }
+                });
+            } else {
+                document.getElementById('detalle-titulo').textContent = "Platillo no encontrado";
+            }
+        });
+    </script>
+</body>
+</html>
