@@ -21,6 +21,17 @@ header {
     max-width: 1200px;
     margin: 0 auto;
 }
+.precio {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+#detalle-precio {
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}
 
 .logo h1 {
     margin: 0;
@@ -232,8 +243,13 @@ h2 {
     transform: translateY(-2px);
 }
 
-section#pedido-domicilio {
-    background-color: #1e293b;
+section#pedido-domicilio p.note {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    background-color: #2d3748;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
 }
 
 #pedidos-seleccionados {
@@ -366,4 +382,68 @@ footer p {
 
 .footer-links a:hover {
     color: #63b3ed;
+}
+
+.cantidad-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem 1rem;
+}
+
+.cantidad-container label {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+.cantidad-input {
+    width: 60px;
+    background-color: #4a5568;
+    color: #fff;
+    border: 1px solid #6b7280;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.cantidad-input:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+section#pedidos-anteriores {
+    background-color: #1e293b;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pedido-anterior {
+    background-color: #2d3748;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.pedido-anterior p {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    margin: 0.5rem 0;
+}
+
+.editar-pedido {
+    background-color: #63b3ed;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.editar-pedido:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
 }
